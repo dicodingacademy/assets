@@ -23,7 +23,7 @@ Resources:
       EnableDnsSupport: true
       Tags:
         - Key: Name
-          Value: Test VPC
+          Value: DevOps Blog VPC
 
   InternetGateway:
     Type: 'AWS::EC2::InternetGateway'
@@ -230,7 +230,7 @@ Resources:
               OutputArtifacts:
                 - Name: SourceArtifact
               Configuration:
-                RepositoryName: 'NewsletterRepo'
+                RepositoryName: 'devops-blog-app'
                 BranchName: 'main'
         - Name: Deploy
           Actions:
@@ -254,7 +254,7 @@ Resources:
                 Provider: CodeBuild
                 Version: "1"
               Configuration:
-                ProjectName: NewsletterBuild
+                ProjectName: DevOpsBlogBuild
               InputArtifacts:
                 - Name: SourceArtifact
               OutputArtifacts:
@@ -363,7 +363,7 @@ Resources:
   CodeCommitRepo:
     Type: AWS::CodeCommit::Repository
     Properties:
-      RepositoryName: NewsletterRepo
+      RepositoryName: devops-blog-app
       RepositoryDescription: This is a repository for my project with code from a source S3 bucket.
       Code:
         BranchName: main
@@ -427,7 +427,7 @@ Resources:
         ComputeType: BUILD_GENERAL1_SMALL
         Image: aws/codebuild/amazonlinux2-x86_64-standard:3.0
         Type: LINUX_CONTAINER
-      Name: NewsletterBuild
+      Name: DevOpsBlogBuild
       ServiceRole: !Ref 'CodeBuildRole'
       Source:
         Type: CODECOMMIT
@@ -436,7 +436,7 @@ Resources:
           - ''
           - - 'https://git-codecommit.'
             - !Ref 'AWS::Region'
-            - '.amazonaws.com/v1/repos/NewsletterRepo'
+            - '.amazonaws.com/v1/repos/devops-blog-app'
     Type: AWS::CodeBuild::Project
 
   CodeBuildRole:
