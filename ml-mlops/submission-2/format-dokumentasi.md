@@ -13,5 +13,5 @@ Username dicoding:
 | Metrik evaluasi | Deksripsi metrik yang digunakan untuk mengevaluasi performa model |
 | Performa model | Deksripsi performa model yang dibuat |
 | Opsi deployment | Deksripsi tentang opsi deployment |
-| Web app | Tautan web app yang digunakan untuk mengakses model serving |
+| Web app | Tautan web app yang digunakan untuk mengakses model serving. Contoh: [nama-model](https://model-resiko-kredit.herokuapp.com/v1/models/model-resiko-kredit/metadata)|
 | Monitoring | Deksripsi terkait hasil monitoring dari model serving |
